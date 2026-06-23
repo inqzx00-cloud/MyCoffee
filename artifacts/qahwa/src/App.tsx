@@ -5,16 +5,22 @@ import NotFound from "@/pages/not-found";
 import Browse from "@/pages/Browse";
 import ShopDetail from "@/pages/ShopDetail";
 import RatePage from "@/pages/RatePage";
+import MapPage from "@/pages/MapPage";
 import { AppProvider } from "@/context/AppContext";
+import { PointsBar } from "@/components/PointsBar";
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Browse} />
-      <Route path="/shop/:id" component={ShopDetail} />
-      <Route path="/rate/:id" component={RatePage} />
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <PointsBar />
+      <Switch>
+        <Route path="/" component={Browse} />
+        <Route path="/shop/:id" component={ShopDetail} />
+        <Route path="/rate/:id" component={RatePage} />
+        <Route path="/map" component={MapPage} />
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
 }
 

@@ -1,6 +1,5 @@
 import { Link, useParams } from "wouter";
 import { useAppContext } from "../context/AppContext";
-import { PointsBar } from "../components/PointsBar";
 import { StarRating } from "../components/StarRating";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -36,8 +35,6 @@ export default function ShopDetail() {
 
   return (
     <div className="min-h-[100dvh] bg-background flex flex-col pb-12">
-      <PointsBar />
-      
       <div className="w-full h-64 md:h-80 relative">
         <img 
           src={shop.image_url} 

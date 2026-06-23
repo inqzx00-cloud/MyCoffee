@@ -1,13 +1,11 @@
 import { useAppContext } from "../context/AppContext";
 import { CafeCard } from "../components/CafeCard";
-import { PointsBar } from "../components/PointsBar";
 
 export default function Browse() {
   const { shops } = useAppContext();
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <PointsBar />
       <main className="flex-1 container mx-auto px-4 py-8 md:py-12 max-w-6xl">
         <header className="mb-10 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
