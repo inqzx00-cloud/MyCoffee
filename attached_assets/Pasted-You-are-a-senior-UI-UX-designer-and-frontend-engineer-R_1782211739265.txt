@@ -1,0 +1,97 @@
+You are a senior UI/UX designer and frontend engineer.
+
+Refactor my existing coffee rating app ("Qahwa") to significantly improve its visual design without adding new features.
+
+--------------------------------------------------
+
+OBJECTIVE
+
+Upgrade the UI from basic/minimal to a warm, layered, indie-style interface with strong visual hierarchy and depth.
+
+Do NOT add new features. Only improve design, layout, and styling.
+
+--------------------------------------------------
+
+DESIGN DIRECTION
+
+The app should feel:
+- cozy
+- warm
+- indie
+- slightly imperfect (not corporate)
+
+--------------------------------------------------
+
+COLOR PALETTE (STRICT)
+
+Use these colors consistently:
+
+- Background: #F5E9DA (cream)
+- Primary text: #3E2C23 (dark coffee)
+- Secondary text: #6F4E37 (brown)
+- Accent: #D9A066 (soft orange)
+- Secondary accent: #7A8F7B (muted green)
+- Alert: #A65D57 (dusty red)
+
+--------------------------------------------------
+
+TYPOGRAPHY
+
+- Headings: serif font (Playfair Display or Lora)
+- Body: sans-serif (Inter)
+
+Create clear hierarchy:
+- Large bold headings
+- Muted secondary text
+- Emphasized ratings
+
+--------------------------------------------------
+
+VISUAL IMPROVEMENTS
+
+1. Add depth:
+- soft shadows (not harsh)
+- subtle gradients for background
+- layered cards
+
+2. Spacing:
+- increase padding and margins
+- avoid cramped layouts
+
+3. Cards:
+- rounded corners (lg or xl)
+- soft shadow
+- hover elevation effect
+
+4. Buttons:
+- rounded
+- subtle hover scale
+- smooth transitions
+
+--------------------------------------------------
+
+BACKGROUND
+
+Use a subtle gradient:
+linear-gradient(180deg, #F5E9DA 0%, #EAD7C3 100%)
+
+--------------------------------------------------
+
+ANIMATIONS
+
+- Use transition: all 0.2s ease
+- Add hover lift for cards
+- Add button press feedback
+
+--------------------------------------------------
+
+OUTPUT
+
+- Update all relevant components
+- Keep TailwindCSS
+- Do not overcomplicate
+- Keep code clean and readable
+
+--------------------------------------------------
+
+END
