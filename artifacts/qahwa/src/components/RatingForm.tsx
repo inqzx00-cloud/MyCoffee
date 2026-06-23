@@ -1,12 +1,43 @@
 import { useState } from "react";
 import { StarRating } from "./StarRating";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Coffee, Wifi, Heart } from "lucide-react";
 
 interface RatingFormProps {
   onSubmit: (ratings: { coffee: number; vibe: number; internet: number }) => void;
   isSubmitting?: boolean;
+}
+
+interface CategoryRowProps {
+  icon: React.ReactNode;
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+  last?: boolean;
+}
+
+function CategoryRow({ icon, label, value, onChange, last }: CategoryRowProps) {
+  return (
+    <div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10, padding: "20px 0" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            {icon}
+            <label style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: 17, fontWeight: 600, color: "#3E2C23",
+            }}>
+              {label}
+            </label>
+          </div>
+          <span style={{ fontSize: 13, color: "#A67C52", fontWeight: 500 }}>
+            {value > 0 ? `${value}/5` : "Tap to rate"}
+          </span>
+        </div>
+        <StarRating value={value} onChange={onChange} size="lg" />
+      </div>
+      {!last && <div style={{ height: 1, background: "#E8D5BE" }} />}
+    </div>
+  );
 }
 
 export function RatingForm({ onSubmit, isSubmitting }: RatingFormProps) {
@@ -24,56 +55,70 @@ export function RatingForm({ onSubmit, isSubmitting }: RatingFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" data-testid="rating-form">
-      <Card className="border-none shadow-md bg-card">
-        <CardContent className="p-6 space-y-6">
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-primary">
-                <Coffee className="w-5 h-5 text-secondary" />
-                <label className="font-serif font-medium text-lg">Coffee Quality</label>
-              </div>
-              <span className="text-sm text-muted-foreground">{coffee > 0 ? `${coffee}/5` : "Tap to rate"}</span>
-            </div>
-            <StarRating value={coffee} onChange={setCoffee} size="lg" />
-          </div>
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }} data-testid="rating-form">
+      <div
+        style={{
+          background: "rgba(251,243,234,0.95)",
+          border: "1px solid #E8D5BE",
+          borderRadius: 24,
+          padding: "0 24px",
+          boxShadow: "0 4px 24px rgba(62,44,35,0.1)",
+        }}
+      >
+        <CategoryRow
+          icon={<Coffee size={18} color="#D9A066" />}
+          label="Coffee Quality"
+          value={coffee}
+          onChange={setCoffee}
+        />
+        <CategoryRow
+          icon={<Heart size={18} color="#A65D57" />}
+          label="Vibe & Atmosphere"
+          value={vibe}
+          onChange={setVibe}
+        />
+        <CategoryRow
+          icon={<Wifi size={18} color="#7A8F7B" />}
+          label="Internet & Seating"
+          value={internet}
+          onChange={setInternet}
+          last
+        />
+      </div>
 
-          <div className="h-px bg-border/50 w-full" />
-
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-primary">
-                <Heart className="w-5 h-5 text-secondary" />
-                <label className="font-serif font-medium text-lg">Vibe & Atmosphere</label>
-              </div>
-              <span className="text-sm text-muted-foreground">{vibe > 0 ? `${vibe}/5` : "Tap to rate"}</span>
-            </div>
-            <StarRating value={vibe} onChange={setVibe} size="lg" />
-          </div>
-
-          <div className="h-px bg-border/50 w-full" />
-
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-primary">
-                <Wifi className="w-5 h-5 text-secondary" />
-                <label className="font-serif font-medium text-lg">Internet & Seating</label>
-              </div>
-              <span className="text-sm text-muted-foreground">{internet > 0 ? `${internet}/5` : "Tap to rate"}</span>
-            </div>
-            <StarRating value={internet} onChange={setInternet} size="lg" />
-          </div>
-        </CardContent>
-      </Card>
-
-      <Button 
-        type="submit" 
-        className="w-full h-12 text-lg font-serif tracking-wide bg-accent hover:bg-accent/90 text-accent-foreground shadow-md transition-all hover:-translate-y-0.5" 
+      <button
+        type="submit"
         disabled={!isValid || isSubmitting}
+        style={{
+          width: "100%",
+          padding: "14px 24px",
+          fontSize: 17,
+          fontWeight: 700,
+          fontFamily: "'Playfair Display', serif",
+          letterSpacing: "0.02em",
+          borderRadius: 99,
+          border: "none",
+          cursor: isValid ? "pointer" : "not-allowed",
+          background: isValid ? "#6F4E37" : "#D9A06655",
+          color: isValid ? "#F5E9DA" : "#A67C52",
+          boxShadow: isValid ? "0 4px 20px rgba(111,78,55,0.3)" : "none",
+          transition: "all 0.2s ease",
+          transform: "translateY(0)",
+        }}
+        onMouseOver={e => {
+          if (isValid) {
+            (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
+            (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 28px rgba(111,78,55,0.35)";
+          }
+        }}
+        onMouseOut={e => {
+          (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+          (e.currentTarget as HTMLButtonElement).style.boxShadow = isValid ? "0 4px 20px rgba(111,78,55,0.3)" : "none";
+        }}
         data-testid="button-submit-rating"
       >
-        {isSubmitting ? "Brewing..." : "Submit Rating (+15 pts)"}
-      </Button>
+        {isSubmitting ? "Brewing…" : "Submit Rating (+15 pts)"}
+      </button>
     </form>
   );
 }
