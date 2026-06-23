@@ -1,0 +1,227 @@
+You are a senior full-stack engineer and product designer.
+
+Build a modern web app called "Qahwa" — a warm, indie-style platform where users rate coffee shops.
+
+--------------------------------------------------
+
+PRODUCT OVERVIEW
+
+Qahwa allows users to:
+- Browse coffee shops
+- Rate them based on:
+  1. Coffee quality ☕
+  2. Vibe 🎧
+  3. Internet 📶
+- Earn points for each rating
+
+The app should feel cozy, warm, and slightly indie — not corporate.
+
+--------------------------------------------------
+
+TECH STACK
+
+- Next.js (App Router)
+- TypeScript
+- TailwindCSS
+- Local mock data (NO Firebase for now)
+- Functional React components only
+
+--------------------------------------------------
+
+MVP SCOPE (STRICT)
+
+Include:
+- Browse coffee shops page
+- Rating system (3 categories)
+- Points system (simple)
+- Coffee shop detail page
+
+Exclude:
+- Authentication
+- Social features
+- Real database
+- APIs
+
+--------------------------------------------------
+
+DATA MODELS
+
+Define TypeScript interfaces:
+
+CoffeeShop:
+- id: string
+- name: string
+- location: string
+- image_url: string
+
+Rating:
+- id: string
+- shop_id: string
+- coffee: number (1–5)
+- vibe: number (1–5)
+- internet: number (1–5)
+- created_at: string
+
+User:
+- id: string
+- name: string
+- points: number
+
+--------------------------------------------------
+
+MOCK DATA
+
+Create a local file:
+src/data/shops.ts
+
+Include 6–10 coffee shops with realistic names and locations.
+
+--------------------------------------------------
+
+CORE FEATURES
+
+1. Browse Page (/)
+
+- Display coffee shops in a responsive grid:
+  - 1 column mobile
+  - 2 tablet
+  - 3 desktop
+
+Each card shows:
+- Shop name
+- Location
+- Average rating (mocked initially)
+- Button: "Rate"
+
+--------------------------------------------------
+
+2. Coffee Shop Detail Page (/shop/[id])
+
+Display:
+- Name
+- Image
+- Location
+- Average ratings (coffee, vibe, internet)
+- Button: "Rate this cafe"
+
+--------------------------------------------------
+
+3. Rating Page (/rate/[id])
+
+- Show 3 rating inputs:
+  - Coffee
+  - Vibe
+  - Internet
+
+Use:
+- sliders OR star ratings (clean UI)
+
+Submit button:
+- On submit:
+  - store rating in local state
+  - add points to user
+
+--------------------------------------------------
+
+4. Points System
+
+- +10 points per rating
+- +5 bonus if all 3 fields filled
+
+Display points:
+- Top bar OR profile section
+
+Text style example:
+"You’ve brewed 120 points ☕"
+
+--------------------------------------------------
+
+STATE MANAGEMENT
+
+Use React hooks:
+
+- shops → list of cafes
+- ratings → array of submitted ratings
+- user → stores points
+- selectedShop → current shop
+
+--------------------------------------------------
+
+UI / UX DESIGN (IMPORTANT)
+
+Style must feel:
+
+- warm
+- cozy
+- indie
+- slightly imperfect (not corporate)
+
+--------------------------------------------------
+
+COLOR PALETTE
+
+Use these exact colors:
+
+- Background: #F5E9DA (cream)
+- Primary text: #3E2C23 (coffee dark)
+- Secondary text: #6F4E37 (warm brown)
+- Accent: #D9A066 (soft orange)
+- Secondary accent: #7A8F7B (muted green)
+- Alert: #A65D57 (dusty red)
+
+--------------------------------------------------
+
+DESIGN RULES
+
+- Rounded cards
+- Soft shadows
+- Generous spacing
+- Minimal borders
+- Use serif or cozy-looking fonts
+- Smooth hover transitions
+
+--------------------------------------------------
+
+COMPONENT STRUCTURE
+
+/src
+  /app
+    page.tsx
+    /shop/[id]/page.tsx
+    /rate/[id]/page.tsx
+
+  /components
+    CafeCard.tsx
+    RatingForm.tsx
+    PointsBar.tsx
+
+  /data
+    shops.ts
+
+  /types
+    index.ts
+
+--------------------------------------------------
+
+LOGIC REQUIREMENTS
+
+- Average rating:
+  (coffee + vibe + internet) / 3
+
+- Store ratings in memory (React state)
+
+- Update UI after rating submission
+
+--------------------------------------------------
+
+OUTPUT REQUIREMENTS
+
+- Generate files one by one
+- Show file path before code
+- Provide complete working code
+- Keep code clean and readable
+- Do NOT overengineer
+
+--------------------------------------------------
+
+END

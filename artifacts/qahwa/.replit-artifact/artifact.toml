@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Qahwa"
+version = "1.0.0"
+id = "artifacts/qahwa"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25723
+
+[services.development]
+run = "pnpm --filter @workspace/qahwa run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/qahwa", "run", "build" ]
+publicDir = "artifacts/qahwa/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25723"
+BASE_PATH = "/"
