@@ -31,7 +31,7 @@ Qahwa gives users a simple way to discover and compare cafes using the things th
 
 ## Tech Stack
 
-- Next.js (App Router)
+- Next.js 
 - TypeScript
 - TailwindCSS
 - Local mock data for the first version
