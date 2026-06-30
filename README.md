@@ -15,7 +15,7 @@ Qahwa gives users a simple way to discover and compare cafes using the things th
 - Vibe
 - Internet quality
 - Community ratings
-- Personal points and progress
+- Personal point and progress
 
 ## MVP Features
 
