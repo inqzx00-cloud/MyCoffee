@@ -3,7 +3,7 @@
 
 Qahwa is a warm, indie-style coffee discovery app where users can browse coffee shops, rate them on coffee, vibe, and internet, and earn points for contributing reviews.
 
-It is designed to feel cozy, modern, and community-driven — like a digital notebook for people who care about where they drink coffee and study best.
+It is designed to feel cozy, modern, and community-driven — like a digital notebook for people who care about where they drink coffee and study best. Designed for you. 
 
 ## Why Qahwa exists
 
